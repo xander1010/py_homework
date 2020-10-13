@@ -1,4 +1,5 @@
 import unittest
+import time
 
 class test_demo(unittest.TestCase):
 
@@ -139,9 +140,35 @@ class test_demo(unittest.TestCase):
 
         print(dir(unittest))  # 返回导入的模块下所有的函数和属性以列表形式
 
+    def double_generator(self,ite):
+        print("进入")
+        for i in ite:
+            print('循环',i)
+            yield i + i
 
+    def test_4_iter(self):
+        for v in self.double_generator(range(1000)):
+            print(v)
+            if v > 5:
+                break
 
-
+    # 定义装饰器
+    def time_calc(func):
+        def wrapper(*args, **kargs):        
+            start_time = time.time()        
+            f = func(*args,**kargs)        
+            exec_time = time.time() - start_time       
+            return f,'计算时间为：{}'.format(exec_time)
+        return wrapper   
+    
+    # 使用装饰器
+    @time_calc    
+    def add(self,a, b):
+        return a + b
+    
+    @time_calc
+    def sub(self,a, b):    
+        return a - b
 
 
 
@@ -149,5 +176,13 @@ class test_demo(unittest.TestCase):
 if __name__ == "__main__":
     td = test_demo()
     td.div_demo()
+    g = td.double_generator(range(5))
+    print(next(g))
+    print(next(g))
 
-    unittest.main()
+    a = td.add(1,2)
+    b = td.sub(200222222222,5564612)
+    print(a,b)
+
+    # unittest.main()
+    
