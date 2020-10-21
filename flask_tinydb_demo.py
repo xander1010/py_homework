@@ -15,7 +15,7 @@ def create_task():
     task = request.json
     if task is not None and task["title"]:
         task_data = {'title': task['title'], 'done': False, 'id': str(uuid.uuid4())}  #uuid下分uuid1,3,4,5,每个通过不同的方式生成
-        db.insert(task_data)
+        db.insert(task_data)                                  #通过insert插入数据
         return jsonify({"id":task_data["id"]})
     else:
         return jsonify({'msg': 'title is required'}), 442
@@ -70,7 +70,7 @@ def toggle_task(task_id):
     result = db.search(Task.id == task_id)   # 查询对应id
     if len(result) >= 1:
         opposite = not result[0]['done']   # 设置对应结果的done值相反的状态，假和真切换
-        db.update({'done': opposite},Task.id == task_id)   # 修改done的值
+        db.update({'done': opposite},Task.id == task_id)   # 修改done的值update
         return jsonify({'id': task_id, 'done': opposite})
     else:
         return jsonify({'msg': 'NOT FOUND'}), 404
