@@ -8,9 +8,9 @@
 |  3   | assertTrue(expr,msg=None)                | 验证expr是true，如果为false，则fail     |
 |  4   | assertFalse(expr,msg=None)               | 验证expr是false，如果为true，则fail     |
 |  5   | assertIs(arg1,arg2,msg=None)             | 验证arg1、arg2是同一个对象，不是则fail   |
-|  6   | assertNot(arg1,arg2,msg=None)            | 验证arg1、arg2不是同一个对象，是则fail   |
-|  7   | assertNone(expr,msg=None)                | 验证expr是None，不是则fail              |
-|  8   | assertNotNone(expr,msg=None)             | 验证expr不是None，是则fail              |
+|  6   | assertIsNot(arg1,arg2,msg=None)          | 验证arg1、arg2不是同一个对象，是则fail   |
+|  7   | assertIsNone(expr,msg=None)              | 验证expr是None，不是则fail              |
+|  8   | assertIsNotNone(expr,msg=None)           | 验证expr不是None，是则fail              |
 |  9   | assertIn(arg1,arg2,msg=None)             | 验证arg1是arg2的子串，不是则fail         |
 |  10  | assertNotIn(arg1,arg2,msg=None)          | 验证arg1不是arg2的子串，是则fail         |
 |  11  | assertIsInstance(obj,cls,msg=None)       | 验证obj是cls的实例，不是则fail           |
